@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
+    './app/components/**/*',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*'
