@@ -28,6 +28,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Check Rubocop
+        run: |
+          bundle exec rubocop
       - name: Setup test database
         env:
           DATABASE_URL: postgres://rails_github_actions:postgres@127.0.0.1/anno1800_goods_tracker_test

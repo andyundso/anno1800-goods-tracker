@@ -1,0 +1,18 @@
+require:
+  - standard
+  - rubocop-rails
+  - rubocop-minitest
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - public/**/*
+    - vendor/**/*
+
+Rails:
+  Enabled: true
+Minitest:
+  Enabled: true
