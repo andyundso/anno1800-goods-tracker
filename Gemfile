@@ -54,12 +54,19 @@ gem "sidekiq"
 # Translations for models
 gem "mobility", "~> 1.2"
 
+# Capsule repeating views into components
+gem "view_component"
+
+# General translations
+gem "rails-i18n"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
 
   # Fixture replacement
   gem "factory_bot_rails"
+  gem "faker"
 
   # Format code and apply best practices
   gem "standard", require: false

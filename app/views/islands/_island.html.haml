@@ -1,0 +1,13 @@
+= turbo_frame_tag dom_id(island) do
+  .rounded.border-2.border-gray-300.p-4.h-full
+    .flex.justify-between.mb-5
+      %p.font-bold=island.name
+      .flex
+        - if island.region.avatar.attached?
+          = image_tag(url_for(island.region.avatar), class: 'h-4 m-1 filter invert')
+
+        = link_to edit_game_island_path(island.game, island) do
+          %i.ri-edit-line.text-base.m-1
+
+        = button_to [island.game, island], method: :delete do
+          %i.ri-delete-bin-line.text-base.m-1

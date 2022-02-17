@@ -28,13 +28,13 @@ module Seeds
       REGIONS.each do |seed|
         Rails.logger.debug { "Creating #{seed[:name_en]} ..." }
 
-        region = Region.i18n.find_by(name: seed[:name_en]) || Region.new
+        region = Region.i18n.find_by(name: seed[:name_de]) || Region.new
 
         region.name_en = seed[:name_en]
         region.name_de = seed[:name_de]
         region.save!
 
-        next unless region.reload.avatar.attached?
+        next if region.reload.avatar.attached?
 
         url = URI.parse(seed[:url_to_image])
         filename = File.basename(url.path)

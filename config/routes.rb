@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => "/sidekiq"
 
-  resources :games, only: %i[create new show]
+  resources :games, only: %i[create new show] do
+    resources :islands, only: %i[create destroy edit new update]
+  end
 
   root "games#new"
 end

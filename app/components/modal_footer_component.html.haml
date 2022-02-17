@@ -1,0 +1,6 @@
+.flex.flex-row.items-center.justify-between.p-5.bg-white.border-t.border-gray-200.rounded-bl-lg.rounded-br-lg
+  - if @modal
+    %p.modal-close.font-semibold.text-gray-600{"data-action" => "click->modal#close"} Abbrechen
+  - elsif @path
+    = link_to 'Abbrechen', @path
+  = content
