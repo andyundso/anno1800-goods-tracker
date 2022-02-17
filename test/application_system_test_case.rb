@@ -1,7 +1,7 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :rack_test
+  include ActionView::RecordIdentifier
 
   Capybara.register_driver :headless_chromium do |app|
     options = Selenium::WebDriver::Chrome::Options.new
@@ -12,7 +12,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: options)
   end
 
-  Capybara.javascript_driver = :headless_chromium
+  driven_by :headless_chromium
 
   # Ensure 404 bring up error pages
   Rails.application.config.action_dispatch.show_exceptions = true
