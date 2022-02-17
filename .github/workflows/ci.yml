@@ -39,11 +39,13 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs $(nproc) --retry 3
       - name: Setup test database
-        env: &default_env
+        env:
           DATABASE_URL: postgres://rails_github_actions:postgres@127.0.0.1/anno1800_goods_tracker_test
           RAILS_ENV: test
         run: |
           rake db:create db:migrate
       - name: Run tests
-        env: *default_env
+        env:
+          DATABASE_URL: postgres://rails_github_actions:postgres@127.0.0.1/anno1800_goods_tracker_test
+          RAILS_ENV: test
         run: rails test:all
