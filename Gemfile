@@ -66,6 +66,7 @@ group :development, :test do
 
   # Fixture replacement
   gem "factory_bot_rails"
+  gem "faker"
 
   # Format code and apply best practices
   gem "standard", require: false
