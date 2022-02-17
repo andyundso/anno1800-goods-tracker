@@ -54,6 +54,11 @@ group :development, :test do
 
   # Fixture replacement
   gem 'factory_bot_rails'
+
+  # Format code and apply best practices
+  gem "standard", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-minitest", require: false
 end
 
 group :development do
