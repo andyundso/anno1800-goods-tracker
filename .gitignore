@@ -35,3 +35,5 @@
 
 # Ignore default database yaml
 config/database.yml
+
+/config/credentials/development.key

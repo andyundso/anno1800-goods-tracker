@@ -1,6 +1,16 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  Sidekiq::Web.use(Rack::Auth::Basic) do |username, password|
+    username == Rails.application.credentials.sidekiq[:username] &&
+      password == Rails.application.credentials.sidekiq[:password]
+  end
+
+  mount Sidekiq::Web => "/sidekiq"
+
   resources :games, only: %i[create new show]
+
   root "games#new"
 end
