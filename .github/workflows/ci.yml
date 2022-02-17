@@ -1,0 +1,49 @@
+name: Rails
+on: push
+
+jobs:
+  verify:
+    name: Build
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: rails_github_actions
+          POSTGRES_DB: rails_github_actions_test
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Cache
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.1.x
+      - name: Install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          gem install bundler --no-document
+          bundle config path vendor/bundle
+          bundle install --jobs $(nproc) --retry 3
+      - name: Setup test database
+        env: &default_env
+          DATABASE_URL: postgres://rails_github_actions:postgres@127.0.0.1/anno1800_goods_tracker_test
+          RAILS_ENV: test
+        run: |
+          rake db:create db:migrate
+      - name: Run tests
+        env: *default_env
+        run: rails test:all
