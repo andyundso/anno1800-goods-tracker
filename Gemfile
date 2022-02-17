@@ -55,7 +55,10 @@ gem "sidekiq"
 gem "mobility", "~> 1.2"
 
 # Capsule repeating views into components
-gem 'view_component'
+gem "view_component"
+
+# General translations
+gem "rails-i18n"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
