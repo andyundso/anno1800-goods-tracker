@@ -21,6 +21,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
       - name: Set up Cache
         uses: actions/cache@v2
         with:
@@ -30,20 +33,16 @@ jobs:
             ${{ runner.os }}-gems-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
-      - name: Install dependencies
-        run: |
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
-          gem install bundler --no-document
-          bundle config path vendor/bundle
-          bundle install --jobs $(nproc) --retry 3
+        with:
+          bundler-cache: true
       - name: Setup test database
         env:
           DATABASE_URL: postgres://rails_github_actions:postgres@127.0.0.1/anno1800_goods_tracker_test
           RAILS_ENV: test
         run: |
-          rake db:create db:migrate
+          bundle exec rake db:create db:migrate
       - name: Run tests
         env:
           DATABASE_URL: postgres://rails_github_actions:postgres@127.0.0.1/anno1800_goods_tracker_test
           RAILS_ENV: test
-        run: rails test:all
+        run: bundle exec rails test:all
