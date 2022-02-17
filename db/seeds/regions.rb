@@ -34,16 +34,16 @@ module Seeds
         region.name_de = seed[:name_de]
         region.save!
 
-        next if region.reload.avatar.attached?
+        next if region.reload.icon.attached?
 
         url = URI.parse(seed[:url_to_image])
         filename = File.basename(url.path)
         file = url.open
 
-        region.avatar.attach(io: file, filename: filename)
+        region.icon.attach(io: file, filename: filename)
         region.save!
 
-        raise unless region.avatar.attached?
+        raise unless region.icon.attached?
 
         file.close
       end

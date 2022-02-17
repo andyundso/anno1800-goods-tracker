@@ -4,5 +4,5 @@ class Region < ApplicationRecord
 
   has_many :islands, dependent: :destroy
 
-  has_one_attached :avatar
+  has_one_attached :icon
 end
