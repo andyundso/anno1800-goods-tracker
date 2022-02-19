@@ -145,6 +145,9 @@ GEM
     irb (1.4.1)
       reline (>= 0.3.0)
     jmespath (1.6.0)
+    listen (3.7.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.14.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -225,6 +228,9 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    rb-fsevent (0.11.1)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
     redis (4.6.0)
     regexp_parser (2.2.1)
     reline (0.3.1)
@@ -317,6 +323,7 @@ DEPENDENCIES
   haml-rails
   image_processing (~> 1.2)
   importmap-rails
+  listen
   mobility (~> 1.2)
   pg (~> 1.1)
   propshaft

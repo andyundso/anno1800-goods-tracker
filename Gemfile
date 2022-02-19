@@ -83,6 +83,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Hot reload code
+  gem 'listen'
 end
 
 group :test do
