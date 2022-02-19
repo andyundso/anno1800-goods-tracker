@@ -9,8 +9,8 @@ class AddExports < ActiveRecord::Migration[7.0]
     end
 
     change_table :available_goods, bulk: true do |t|
-      t.decimal :export
-      t.decimal :import
+      t.decimal :export, null: false, default: 0.0
+      t.decimal :import, null: false, default: 0.0
     end
   end
 end

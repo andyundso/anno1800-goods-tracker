@@ -44,15 +44,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_19_181933) do
   end
 
   create_table "available_goods", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.decimal "consumption"
-    t.decimal "production"
+    t.decimal "consumption", default: "0.0", null: false
+    t.decimal "production", default: "0.0", null: false
     t.uuid "island_id", null: false
     t.uuid "good_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "local_usage"
-    t.decimal "export"
-    t.decimal "import"
+    t.decimal "local_usage", default: "0.0", null: false
+    t.decimal "export", default: "0.0", null: false
+    t.decimal "import", default: "0.0", null: false
     t.index ["good_id"], name: "index_available_goods_on_good_id"
     t.index ["island_id"], name: "index_available_goods_on_island_id"
   end
