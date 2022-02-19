@@ -8,7 +8,17 @@
   .flex.flex-col.pt-4
     = form.label :good, class: "mb-2 font-semibold text-gray-700"
     %div{'data-controller' => 'tom-select'}
-      = form.collection_select :good_id, Good.i18n.order(:name), :id, :name, include_blank: false
+      = form.collection_select :good_id, Good.i18n.order(:name).eager_load(:string_translations), :id, :name, include_blank: false
+
+  %div.pt-4
+    %p.text-2xl.font-bold
+      Eingabewaren
+
+  #input_goods.pt-4.pb-4
+    = form.fields_for :input_goods do |task|
+      = render 'input_goods/input_good_fields', f: task
+    .pb-4
+    = link_to_add_association 'Eingabeware hinzufügen', form, :input_goods, partial: 'input_goods/input_good_fields', class: 'bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded', render_options: { locals: { island: @island } }
 
   .flex.flex-col.pt-4
     = form.label :production, class: "mb-2 font-semibold text-gray-700"

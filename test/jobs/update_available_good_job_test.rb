@@ -34,4 +34,19 @@ class UpdateAvailableGoodJobTest < ActiveJob::TestCase
       UpdateAvailableGoodJob.perform_now(available_good.island_id, available_good.good_id)
     end
   end
+
+  test "should calculate with input good on island" do
+    original_good = create(:good)
+    output_good = create(:local_produced_good)
+    input_good = create(:input_good, input_good: original_good, output_good: output_good)
+
+    assert_difference "AvailableGood.count", 1 do
+      UpdateAvailableGoodJob.perform_now(output_good.island_id, input_good.input_good_id)
+    end
+
+    available_good = AvailableGood.last
+
+    assert_equal input_good.input_good_id, available_good.good_id
+    assert_equal output_good.production, available_good.local_usage
+  end
 end

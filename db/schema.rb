@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_19_111027) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_19_133323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_19_111027) do
     t.uuid "good_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "local_usage"
     t.index ["good_id"], name: "index_available_goods_on_good_id"
     t.index ["island_id"], name: "index_available_goods_on_island_id"
   end
@@ -62,6 +63,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_19_111027) do
   create_table "goods", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "input_goods", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "input_good_id", null: false
+    t.uuid "output_good_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["input_good_id"], name: "index_input_goods_on_input_good_id"
+    t.index ["output_good_id"], name: "index_input_goods_on_output_good_id"
   end
 
   create_table "islands", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -119,6 +129,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_19_111027) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "available_goods", "goods"
   add_foreign_key "available_goods", "islands"
+  add_foreign_key "input_goods", "goods", column: "input_good_id"
+  add_foreign_key "input_goods", "local_produced_goods", column: "output_good_id"
   add_foreign_key "islands", "games"
   add_foreign_key "islands", "regions"
   add_foreign_key "local_produced_goods", "goods"
