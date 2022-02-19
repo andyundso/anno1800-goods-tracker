@@ -21,5 +21,7 @@ module Anno1800GoodsTracker
 
     I18n.available_locales = %i[en de]
     I18n.default_locale = :de
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
