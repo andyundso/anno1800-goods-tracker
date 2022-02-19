@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_17_200519) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_19_102354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -63,6 +63,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_200519) do
     t.index ["region_id"], name: "index_islands_on_region_id"
   end
 
+  create_table "local_produced_goods", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.decimal "production"
+    t.decimal "consumption"
+    t.uuid "island_id", null: false
+    t.uuid "good_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["good_id"], name: "index_local_produced_goods_on_good_id"
+    t.index ["island_id"], name: "index_local_produced_goods_on_island_id"
+  end
+
   create_table "mobility_string_translations", force: :cascade do |t|
     t.string "locale", null: false
     t.string "key", null: false
@@ -97,4 +108,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_200519) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "islands", "games"
   add_foreign_key "islands", "regions"
+  add_foreign_key "local_produced_goods", "goods"
+  add_foreign_key "local_produced_goods", "islands"
 end

@@ -1,0 +1,25 @@
+= form_with(model: [island, local_produced_good], id: dom_id(local_produced_good)) do |form|
+  - if local_produced_good.errors.any?
+    .flex.flex-col
+      %ul
+        - local_produced_good.errors.each do |error|
+          %li=error.full_message
+
+  .flex.flex-col.pt-4
+    = form.label :good, class: "mb-2 font-semibold text-gray-700"
+    %div{'data-controller' => 'tom-select'}
+      = form.collection_select :good_id, Good.i18n.order(:name), :id, :name, include_blank: false
+
+  .flex.flex-col.pt-4
+    = form.label :production, class: "mb-2 font-semibold text-gray-700"
+    = form.number_field :production, class: "bg-white border border-gray-200 rounded shadow-sm", step: 0.01
+
+  .flex.flex-col.pt-4
+    = form.label :consumption, class: "mb-2 font-semibold text-gray-700"
+    = form.number_field :consumption, class: "bg-white border border-gray-200 rounded shadow-sm", step: 0.01
+
+  = render ModalFooterComponent.new(path: game_path(@island.game)) do
+    %div
+      - if local_produced_good.persisted?
+        = button_to 'Löschen', [local_produced_good.island, local_produced_good], class: "bg-red-600 hover:bg-red-900 text-white font-bold rounded p-2"
+      = form.submit "Speichern", class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded p-2"

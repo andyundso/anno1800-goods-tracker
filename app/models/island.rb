@@ -2,6 +2,8 @@ class Island < ApplicationRecord
   belongs_to :game
   belongs_to :region
 
+  has_many :local_produced_goods, dependent: :destroy
+
   validates :name, presence: true
 
   after_create_commit { broadcast_append_later_to(game) }

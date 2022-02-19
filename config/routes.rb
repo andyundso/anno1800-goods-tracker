@@ -14,5 +14,9 @@ Rails.application.routes.draw do
     resources :islands, only: %i[create destroy edit new update]
   end
 
+  resources :islands, only: [] do
+    resources :local_produced_goods, only: %i[create new]
+  end
+
   root "games#new"
 end

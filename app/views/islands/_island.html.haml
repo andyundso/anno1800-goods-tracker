@@ -6,6 +6,9 @@
         - if island.region.icon.attached?
           = image_tag(url_for(island.region.icon), class: 'h-4 m-1 filter invert')
 
+        = link_to new_island_local_produced_good_path(island), data: { "turbo-frame": "modal" } do
+          %i.ri-add-line.text-base.m-1
+
         = link_to edit_game_island_path(island.game, island) do
           %i.ri-edit-line.text-base.m-1
 
