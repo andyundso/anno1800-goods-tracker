@@ -16,3 +16,7 @@ Rails:
   Enabled: true
 Minitest:
   Enabled: true
+
+Minitest/MultipleAssertions :
+  Exclude:
+    - test/system/**/*
