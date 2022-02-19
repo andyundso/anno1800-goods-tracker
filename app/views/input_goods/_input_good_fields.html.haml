@@ -1,0 +1,6 @@
+.flex.flex-col.pt-4.nested-fields
+  = f.label :input_good_id, class: "font-semibold text-gray-700"
+  .tom-select-container{'data-controller' => 'tom-select'}
+    = f.collection_select :input_good_id, Good.i18n.order(:name).eager_load(:string_translations), :id, :name, include_blank: false
+
+  = link_to_remove_association "Eingabeware entfernen", f

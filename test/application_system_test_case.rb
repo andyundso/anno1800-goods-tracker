@@ -22,4 +22,16 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   # Ensure 404 bring up error pages
   Rails.application.config.action_dispatch.show_exceptions = true
+
+  def fill_in_tom_select_field(container, value)
+    within(container, match: :first) do
+      find(".ts-control").click
+
+      input_control = find(".ts-control input")
+      input_control.native.clear
+      input_control.send_keys(value)
+    end
+
+    all(".ts-dropdown .ts-dropdown-content .option", text: /#{Regexp.quote(value)}/i)[0].click
+  end
 end
