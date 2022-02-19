@@ -8,6 +8,9 @@ class LocalProducedGood < ApplicationRecord
     dependent: :destroy
   accepts_nested_attributes_for :input_goods, reject_if: :all_blank, allow_destroy: true
 
+  has_many :exports, class_name: "Export", inverse_of: :local_produced_good, dependent: :destroy
+  accepts_nested_attributes_for :exports, reject_if: :all_blank, allow_destroy: true
+
   after_create_commit { update_available_goods }
   after_update_commit { update_available_goods }
   after_destroy_commit { update_available_goods }

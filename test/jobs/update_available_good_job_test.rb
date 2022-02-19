@@ -49,4 +49,29 @@ class UpdateAvailableGoodJobTest < ActiveJob::TestCase
     assert_equal input_good.input_good_id, available_good.good_id
     assert_equal output_good.production, available_good.local_usage
   end
+
+  test "should calculate with export good to island" do
+    export = create(:export)
+
+    assert_difference "AvailableGood.count", 2 do
+      UpdateAvailableGoodJob.perform_now(export.island_id, export.good.id)
+      UpdateAvailableGoodJob.perform_now(export.local_produced_good.island_id, export.good.id)
+    end
+
+    # check for export on production island
+    available_good = AvailableGood.find_by!(
+      good_id: export.good.id,
+      island_id: export.local_produced_good.island_id
+    )
+
+    assert_equal export.quantity, available_good.export
+
+    # check for import on target island
+    available_good = AvailableGood.find_by!(
+      good_id: export.good.id,
+      island_id: export.island_id
+    )
+
+    assert_equal export.quantity, available_good.import
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_19_133323) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_19_181933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -51,8 +51,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_19_133323) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "local_usage"
+    t.decimal "export"
+    t.decimal "import"
     t.index ["good_id"], name: "index_available_goods_on_good_id"
     t.index ["island_id"], name: "index_available_goods_on_island_id"
+  end
+
+  create_table "exports", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.decimal "quantity"
+    t.uuid "local_produced_good_id", null: false
+    t.uuid "island_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["island_id"], name: "index_exports_on_island_id"
+    t.index ["local_produced_good_id"], name: "index_exports_on_local_produced_good_id"
   end
 
   create_table "games", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -129,6 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_19_133323) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "available_goods", "goods"
   add_foreign_key "available_goods", "islands"
+  add_foreign_key "exports", "islands"
+  add_foreign_key "exports", "local_produced_goods"
   add_foreign_key "input_goods", "goods", column: "input_good_id"
   add_foreign_key "input_goods", "local_produced_goods", column: "output_good_id"
   add_foreign_key "islands", "games"

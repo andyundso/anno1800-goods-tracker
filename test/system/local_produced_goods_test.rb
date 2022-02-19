@@ -73,4 +73,40 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
       assert_selector "turbo-frame", count: 2
     end
   end
+
+  test "user wants to add a local good with an export island" do
+    production_island = create(:island)
+    target_island = create(:island, game: production_island.game)
+    good = create(:good)
+
+    visit game_path(production_island.game)
+
+    within "##{dom_id(production_island)}" do
+      find(".ri-add-line").click
+    end
+
+    select good.name_de, from: "local_produced_good_good_id"
+
+    click_on "Export hinzufügen"
+    fill_in "Quantity", with: 5.0
+    within ".nested-fields" do
+      fill_in_tom_select_field(".ts-wrapper", target_island.name)
+    end
+
+    fill_in "Production", with: 5.0
+
+    assert_difference -> { LocalProducedGood.count } => 1, -> { AvailableGood.count } => 2, -> { Export.count } => 1 do
+      click_on "Speichern"
+      assert_text "#{good.name_de} auf #{production_island.name} wurde erfasst."
+    end
+
+    # Ensure the available good gets produced
+    within "#available_goods_#{production_island.id}" do
+      assert_selector "turbo-frame", count: 1
+    end
+
+    within "#available_goods_#{target_island.id}" do
+      assert_selector "turbo-frame", count: 1
+    end
+  end
 end
