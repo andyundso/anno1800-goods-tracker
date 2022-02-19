@@ -1,0 +1,13 @@
+= turbo_frame_tag dom_id(available_good) do
+  .flex.justify-center.items-center.flex-col
+    = image_tag(url_for(available_good.good.icon), class: 'h-16')
+
+    .pt-2.flex.items-center.flex-col
+      - if available_good.production != 0.0
+        %p="Produktion: #{available_good.production}"
+
+      - if available_good.consumption != 0.0
+        %p="Konsum: #{available_good.consumption}"
+
+      - if available_good.sparse != 0.0
+        %p="#{available_good.sparse < 0.0 ? 'Mangel' : 'Überschuss'}: #{available_good.sparse}"
