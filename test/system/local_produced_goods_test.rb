@@ -33,8 +33,12 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
     assert_changes "LocalProducedGood.count", 1 do
       click_on "Speichern"
-
       assert_text "#{good.name_de} auf #{island.name} wurde erfasst."
+    end
+
+    # Ensure the available good gets produced
+    within "#available_goods_#{island.id}" do
+      assert_selector "turbo-frame", count: 1
     end
   end
 end

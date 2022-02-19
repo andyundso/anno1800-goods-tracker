@@ -2,6 +2,7 @@ class Island < ApplicationRecord
   belongs_to :game
   belongs_to :region
 
+  has_many :available_goods, dependent: :destroy
   has_many :local_produced_goods, dependent: :destroy
 
   validates :name, presence: true
