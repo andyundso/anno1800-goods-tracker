@@ -102,6 +102,7 @@ GEM
       capybara (>= 1.0, < 4)
       launchy
     childprocess (4.1.0)
+    cocoon (1.2.15)
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
@@ -323,6 +324,7 @@ DEPENDENCIES
   bootsnap
   capybara
   capybara-screenshot
+  cocoon
   debug
   factory_bot_rails
   faker
