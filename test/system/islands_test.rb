@@ -40,7 +40,7 @@ class IslandsTest < ApplicationSystemTestCase
     visit game_path(island.game)
 
     within "##{dom_id(island)}" do
-      find(".ri-edit-line").click
+      find(".edit-island").click
     end
 
     fill_in "Name", with: ""
@@ -58,7 +58,7 @@ class IslandsTest < ApplicationSystemTestCase
     visit game_path(island.game)
 
     within "##{dom_id(island)}" do
-      find(".ri-edit-line").click
+      find(".edit-island").click
     end
 
     fill_in "Name", with: "Better  Island"

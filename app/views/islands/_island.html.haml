@@ -6,14 +6,14 @@
         - if island.region.icon.attached?
           = image_tag(url_for(island.region.icon), class: 'h-4 m-1 filter invert')
 
-        = link_to new_island_local_produced_good_path(island), data: { "turbo-frame": "modal" } do
-          %i.ri-add-line.text-base.m-1
+        = link_to new_island_local_produced_good_path(island), data: { "turbo-frame": "modal" }, class: 'add-island' do
+          = render Icon::PlusComponent.new
 
-        = link_to edit_game_island_path(island.game, island) do
-          %i.ri-edit-line.text-base.m-1
+        = link_to edit_game_island_path(island.game, island), class: 'edit-island' do
+          = render Icon::PencilComponent.new
 
-        = button_to [island.game, island], method: :delete do
-          %i.ri-delete-bin-line.text-base.m-1
+        = button_to [island.game, island], method: :delete, class: 'delete-island' do
+          = render Icon::TrashComponent.new
 
     = turbo_frame_tag "available_goods_#{island.id}", class: "grid grid-cols-3 gap-4 mb-4" do
       = render island.available_goods.joins(:good).merge(Good.i18n.order(name: :asc))
