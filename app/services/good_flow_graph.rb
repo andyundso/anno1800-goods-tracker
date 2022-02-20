@@ -36,12 +36,16 @@ class GoodFlowGraph
     }
   end
 
-  def examine_next_node(available_good, link = nil)
+  def examine_next_node(available_good, link = nil, flip_edge = false)
     # avoid endless loops by returning early if we already saw something
     return if output.any? { |h| h[:id] == available_good.id }
 
     add_node(available_good)
-    add_edge(available_good, link) unless link.nil?
+
+    if link.present?
+      add_edge(available_good, link) unless flip_edge
+      add_edge(link, available_good) if flip_edge
+    end
 
     # depending on the value set on the good, we can draw different links
     # for local consumption or production, we don't need to further draw links
@@ -86,7 +90,7 @@ class GoodFlowGraph
         island_id: available_good.island_id
       )
 
-      examine_next_node(ag, available_good) unless ag.nil?
+      examine_next_node(ag, available_good, true)
     end
   end
 
@@ -100,7 +104,7 @@ class GoodFlowGraph
     AvailableGood.where(
       good_id: available_good.good_id,
       island_id: island_ids
-    ).each { |ag| examine_next_node(ag, available_good) }
+    ).each { |ag| examine_next_node(ag, available_good, true) }
   end
 
   def find_output_goods(available_good)
