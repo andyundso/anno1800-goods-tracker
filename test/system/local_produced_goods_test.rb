@@ -7,7 +7,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     visit game_path(island.game)
 
     within "##{dom_id(island)}" do
-      find(".ri-add-line").click
+      find(".add-island").click
     end
 
     assert_no_changes "LocalProducedGood.count" do
@@ -24,7 +24,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     visit game_path(island.game)
 
     within "##{dom_id(island)}" do
-      find(".ri-add-line").click
+      find(".add-island").click
     end
 
     select good.name_de, from: "local_produced_good_good_id"
@@ -50,7 +50,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     visit game_path(island.game)
 
     within "##{dom_id(island)}" do
-      find(".ri-add-line").click
+      find(".add-island").click
     end
 
     select output_good.name_de, from: "local_produced_good_good_id"
@@ -82,7 +82,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     visit game_path(production_island.game)
 
     within "##{dom_id(production_island)}" do
-      find(".ri-add-line").click
+      find(".add-island").click
     end
 
     select good.name_de, from: "local_produced_good_good_id"

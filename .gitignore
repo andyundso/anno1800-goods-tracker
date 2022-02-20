@@ -42,3 +42,5 @@ config/database.yml
 /config/credentials/development.key
 
 /config/credentials/production.key
+
+/node_modules
