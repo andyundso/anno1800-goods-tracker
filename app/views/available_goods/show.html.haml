@@ -1,2 +1,2 @@
-= render ModalComponent.new(title: "Ware betrachten") do
+= render ModalComponent.new(title: "#{@available_good.good.name} auf #{@available_good.island.name}") do
   %div{ data: { controller: "good-graph", id: @available_good.id, island_id: @available_good.island_id }, class: "h-5/6" }

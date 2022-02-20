@@ -17,7 +17,7 @@ class GoodFlowGraph
     output << {
       consumption: available_good.consumption,
       good_name: available_good.good.name,
-      # href: island_produced_good_path(produced_good.island, produced_good),
+      href: island_available_good_path(available_good.island_id, available_good.id),
       id: available_good.id,
       island: available_good.island.name,
       image: rails_blob_path(available_good.good.icon, only_path: true),
