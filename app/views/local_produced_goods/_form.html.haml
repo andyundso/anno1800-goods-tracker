@@ -39,7 +39,4 @@
     = link_to_add_association 'Export hinzufügen', form, :exports, partial: 'exports/export_field', class: 'bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded'
 
   = render ModalFooterComponent.new(path: game_path(@island.game)) do
-    %div
-      - if local_produced_good.persisted?
-        = button_to 'Löschen', [local_produced_good.island, local_produced_good], class: "bg-red-600 hover:bg-red-900 text-white font-bold rounded p-2"
-      = form.submit "Speichern", class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded p-2"
+    = form.submit "Speichern", class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded p-2"

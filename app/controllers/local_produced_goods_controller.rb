@@ -19,6 +19,24 @@ class LocalProducedGoodsController < ApplicationController
     end
   end
 
+  def destroy
+    @local_produced_good = LocalProducedGood.find(params[:id])
+
+    text = if @local_produced_good.destroy
+      "Ware wurde gelöscht."
+    else
+      "#{@local_produced_good.good.name} auf #{@local_produced_good.island.name} konnte nicht gelöscht werden."
+    end
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update("flash", partial: "shared/flash", locals: {message: text})
+        ]
+      end
+    end
+  end
+
   def edit
     @local_produced_good = LocalProducedGood.find(params[:id])
   end

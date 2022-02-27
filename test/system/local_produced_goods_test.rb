@@ -131,4 +131,22 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
       assert_text "#{local_produced_good.good.name} auf #{local_produced_good.island.name} wurde aktualisiert."
     end
   end
+
+  test "user wants to delete local produced good" do
+    local_produced_good = create(:local_produced_good)
+    available_good = AvailableGood.find_by(
+      good_id: local_produced_good.good_id,
+      island_id: local_produced_good.island_id
+    )
+
+    visit game_path(local_produced_good.game)
+
+    find("##{dom_id(available_good)} img").click
+    assert_text "#{available_good.good.name} auf #{available_good.island.name}"
+
+    assert_difference "LocalProducedGood.count", -1 do
+      click_on "Löschen"
+      assert_text "Ware wurde gelöscht."
+    end
+  end
 end
