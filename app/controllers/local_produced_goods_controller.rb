@@ -19,8 +19,29 @@ class LocalProducedGoodsController < ApplicationController
     end
   end
 
+  def edit
+    @local_produced_good = LocalProducedGood.find(params[:id])
+  end
+
   def new
     @local_produced_good = LocalProducedGood.new
+  end
+
+  def update
+    @local_produced_good = LocalProducedGood.find(params[:id])
+
+    if @local_produced_good.update(local_produced_goods_params)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("flash", partial: "shared/flash",
+              locals: {message: "#{@local_produced_good.good.name} auf #{@local_produced_good.island.name} wurde aktualisiert."})
+          ]
+        end
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

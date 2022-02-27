@@ -1,2 +1,6 @@
 = render ModalComponent.new(title: "#{@available_good.good.name} auf #{@available_good.island.name}") do
   %div{ data: { controller: "good-graph", id: @available_good.id, island_id: @available_good.island_id }, class: "h-5/6" }
+
+  - if @produced_good
+    = render ModalFooterComponent.new(path: game_path(@produced_good.island.game)) do
+      = link_to "Ändern", edit_island_local_produced_good_path(@produced_good.island, @produced_good), class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded p-2"

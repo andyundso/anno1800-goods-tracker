@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get "graph", on: :member
     end
 
-    resources :local_produced_goods, only: %i[create new]
+    resources :local_produced_goods, only: %i[create edit new update]
   end
 
   root "games#new"

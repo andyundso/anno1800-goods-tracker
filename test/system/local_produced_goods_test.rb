@@ -109,4 +109,26 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
       assert_selector "turbo-frame", count: 1
     end
   end
+
+  test "user wants to edit local produced good - success" do
+    local_produced_good = create(:local_produced_good)
+    available_good = AvailableGood.find_by(
+      good_id: local_produced_good.good_id,
+      island_id: local_produced_good.island_id
+    )
+
+    visit game_path(local_produced_good.game)
+
+    find("##{dom_id(available_good)} img").click
+    assert_text "#{available_good.good.name} auf #{available_good.island.name}"
+
+    click_on "Ändern"
+
+    fill_in "Production", with: 15.0
+
+    assert_changes "local_produced_good.reload.production", to: 15.0 do
+      click_on "Speichern"
+      assert_text "#{local_produced_good.good.name} auf #{local_produced_good.island.name} wurde aktualisiert."
+    end
+  end
 end

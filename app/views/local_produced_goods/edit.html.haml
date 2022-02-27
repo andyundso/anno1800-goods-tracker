@@ -1,0 +1,2 @@
+= render ModalComponent.new(title: "#{@local_produced_good.good.name} auf #{@local_produced_good.island.name} anpassen") do
+  = render "local_produced_goods/form", island: @island, local_produced_good: @local_produced_good
