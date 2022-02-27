@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   end
 
   resources :islands, only: [] do
+    resources :available_goods, only: %i[show] do
+      get "graph", on: :member
+    end
+
     resources :local_produced_goods, only: %i[create new]
   end
 

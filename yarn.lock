@@ -155,9 +155,39 @@ esbuild@^0.14.23:
     esbuild-windows-64 "0.14.23"
     esbuild-windows-arm64 "0.14.23"
 
+eve-raphael@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/eve-raphael/-/eve-raphael-0.5.0.tgz#17c754b792beef3fa6684d79cf5a47c63c4cda30"
+  integrity sha1-F8dUt5K+7z+maE15z1pHxjxM2jA=
+
+graphdracula@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/graphdracula/-/graphdracula-1.3.0.tgz#c846533b55b7fb8275ff4664c8a4a1a4188d4ce5"
+  integrity sha512-FKt/gJPmKFTGIJp/FtVE0Ms9o94w/zDqktJyMEvaCAKssFBGcw+2TlRw1/f84yweBUdEZbLdiewmpnxBGW8B/g==
+  dependencies:
+    lodash "^4.17.11"
+    uuid "^3.3.2"
+
+lodash@^4.17.11:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
+raphael@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/raphael/-/raphael-2.3.0.tgz#eabeb09dba861a1d4cee077eaafb8c53f3131f89"
+  integrity sha512-w2yIenZAQnp257XUWGni4bLMVxpUpcIl7qgxEgDIXtmSypYtlNxfXWpOBxs7LBTps5sDwhRnrToJrMUrivqNTQ==
+  dependencies:
+    eve-raphael "0.5.0"
+
 tom-select@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/tom-select/-/tom-select-2.0.0.tgz#751ac1087cce29bd40e09f1a604e9ad69451fc86"
   integrity sha512-ArECm8bNnv8GMTpvSQawesKX6IDv32cylqivjbghwCddYwfngmz+nOtEhQZkEye7BY415eutqhb4XYim2EL8Hg==
   dependencies:
     "@orchidjs/sifter" "^0.9.0"
+
+uuid@^3.3.2:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
+  integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==

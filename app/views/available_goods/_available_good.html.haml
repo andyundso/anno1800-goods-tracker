@@ -1,6 +1,7 @@
 = turbo_frame_tag dom_id(available_good) do
   .flex.justify-center.items-center.flex-col
-    = image_tag(url_for(available_good.good.icon), class: 'h-16')
+    = link_to [available_good.island, available_good], data: { "turbo-frame": "modal" } do
+      = image_tag(url_for(available_good.good.icon), class: 'h-16')
 
     .pt-2.flex.items-center.flex-col
       - if available_good.import != 0.0

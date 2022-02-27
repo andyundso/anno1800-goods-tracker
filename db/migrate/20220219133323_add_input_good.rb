@@ -7,6 +7,6 @@ class AddInputGood < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_column :available_goods, :local_usage, :decimal
+    add_column :available_goods, :local_usage, :decimal, null: false, default: 0.0
   end
 end

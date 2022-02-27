@@ -37,10 +37,10 @@ class AvailableGood < ApplicationRecord
   end
 
   def calculate_exports
-    LocalProducedGood
-      .joins(:exports)
+    Export
+      .joins(:local_produced_good)
       .where(local_produced_goods: {good_id: good_id, island_id: island_id})
-      .sum("exports.quantity")
+      .sum(:quantity)
   end
 
   def calculate_imports
