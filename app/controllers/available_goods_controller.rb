@@ -5,6 +5,10 @@ class AvailableGoodsController < ApplicationController
 
   def show
     @available_good = AvailableGood.find(params[:id])
+    @produced_good = LocalProducedGood.find_by(
+      good_id: @available_good.good_id,
+      island_id: @available_good.island_id
+    )
 
     respond_to do |format|
       format.turbo_stream do
