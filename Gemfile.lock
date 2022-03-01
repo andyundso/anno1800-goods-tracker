@@ -146,7 +146,7 @@ GEM
     irb (1.4.1)
       reline (>= 0.3.0)
     jmespath (1.6.0)
-    jsbundling-rails (1.0.1)
+    jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     launchy (2.5.0)
       addressable (~> 2.7)
