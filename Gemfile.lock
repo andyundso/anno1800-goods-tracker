@@ -146,7 +146,7 @@ GEM
     irb (1.4.1)
       reline (>= 0.3.0)
     jmespath (1.6.0)
-    jsbundling-rails (1.0.1)
+    jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -184,7 +184,7 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.1-x86_64-linux)
+    nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     parallel (1.21.0)
     parser (3.1.0.0)
