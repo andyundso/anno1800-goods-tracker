@@ -6,7 +6,7 @@
     "@hotwired/turbo-rails": "^7.1.3",
     "@oddcamp/cocoon-vanilla-js": "^1.1.3",
     "@rails/ujs": "^7.0.4",
-    "esbuild": "^0.15.10",
+    "esbuild": "^0.15.12",
     "graphdracula": "^1.3.0",
     "raphael": "^2.3.0",
     "tom-select": "^2.2.1"
