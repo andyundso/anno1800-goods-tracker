@@ -33,6 +33,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
     assert_changes "LocalProducedGood.count", 1 do
       click_on "Speichern"
+
       assert_text "#{good.name_de} auf #{island.name} wurde erfasst."
     end
 
@@ -65,6 +66,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
     assert_difference -> { LocalProducedGood.count } => 1, -> { AvailableGood.count } => 2 do
       click_on "Speichern"
+
       assert_text "#{output_good.name_de} auf #{island.name} wurde erfasst."
     end
 
@@ -97,6 +99,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
     assert_difference -> { LocalProducedGood.count } => 1, -> { AvailableGood.count } => 2, -> { Export.count } => 1 do
       click_on "Speichern"
+
       assert_text "#{good.name_de} auf #{production_island.name} wurde erfasst."
     end
 
@@ -120,6 +123,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     visit game_path(local_produced_good.game)
 
     find("##{dom_id(available_good)} img").click
+
     assert_text "#{available_good.good.name} auf #{available_good.island.name}"
 
     click_on "Ändern"
@@ -128,6 +132,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
     assert_changes "local_produced_good.reload.production", to: 15.0 do
       click_on "Speichern"
+
       assert_text "#{local_produced_good.good.name} auf #{local_produced_good.island.name} wurde aktualisiert."
     end
   end
@@ -142,10 +147,12 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     visit game_path(local_produced_good.game)
 
     find("##{dom_id(available_good)} img").click
+
     assert_text "#{available_good.good.name} auf #{available_good.island.name}"
 
     assert_difference "LocalProducedGood.count", -1 do
       click_on "Löschen"
+
       assert_text "Ware wurde gelöscht."
     end
   end

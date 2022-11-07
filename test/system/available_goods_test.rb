@@ -41,6 +41,7 @@ class AvailableGoodsTest < ApplicationSystemTestCase
 
     assert_text "#{export_available_good.good.name} auf #{export_available_good.island.name}"
     find("tspan", text: import_available_good.island.name).click
+
     assert_text "#{import_available_good.good.name} auf #{import_available_good.island.name}"
   end
 end
