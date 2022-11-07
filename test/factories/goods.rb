@@ -5,7 +5,7 @@ FactoryBot.define do
 
     after(:build) do |good|
       good.icon.attach(
-        io: File.open(Rails.root.join("test/files/icon.png")),
+        io: Rails.root.join("test/files/icon.png").open,
         filename: "icon.png",
         content_type: "image/png"
       )

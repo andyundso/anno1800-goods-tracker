@@ -1,6 +1,14 @@
 class IslandsController < ApplicationController
   before_action :set_game
 
+  def new
+    @island = Island.new
+  end
+
+  def edit
+    @island = Island.find(params[:id])
+  end
+
   def create
     @island = Island.new(island_params)
     @island.game = @game
@@ -19,26 +27,6 @@ class IslandsController < ApplicationController
     end
   end
 
-  def destroy
-    Island.find(params[:id]).destroy
-
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.update("flash", partial: "shared/flash", locals: {message: "Insel wurde gelöscht."})
-        ]
-      end
-    end
-  end
-
-  def edit
-    @island = Island.find(params[:id])
-  end
-
-  def new
-    @island = Island.new
-  end
-
   def update
     @island = Island.find(params[:id])
 
@@ -53,6 +41,18 @@ class IslandsController < ApplicationController
       end
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    Island.find(params[:id]).destroy
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update("flash", partial: "shared/flash", locals: {message: "Insel wurde gelöscht."})
+        ]
+      end
     end
   end
 
