@@ -34,6 +34,13 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      - name: Install node dependencies
+        run: yarn install --frozen-lockfile
       - name: Check Rubocop
         run: |
           bundle exec rubocop
