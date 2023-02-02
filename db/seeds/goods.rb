@@ -526,7 +526,7 @@ module Seeds
       }, {
         name_de: "Gas",
         name_en: "Gas",
-        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/7/78/Gas.png"
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/e/e5/Arctic_Gas.png"
       }, {
         name_de: "Toaster",
         name_en: "Toaster",
