@@ -20,7 +20,13 @@ def seed!(data:, model:)
 
     url = URI.parse(seed[:url_to_image])
     filename = File.basename(url.path)
-    file = url.open
+
+    begin
+      file = url.open
+    rescue OpenURI::HTTPError => e
+      Rails.logger.error { "Unable to fetch image for #{seed[:name_en]}" }
+      raise e
+    end
 
     record.icon.attach(io: file, filename: filename)
     record.save!
