@@ -3,7 +3,7 @@
     = link_to [available_good.island, available_good], data: { "turbo-frame": "modal" } do
       = image_tag(url_for(available_good.good.icon), class: 'h-16')
 
-    .pt-2.flex.items-center.flex-col
+    .pt-2.flex.items-center.flex-col.text-center
       - if available_good.import != 0.0
         %p="Import: #{available_good.import}"
 
