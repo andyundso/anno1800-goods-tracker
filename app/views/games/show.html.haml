@@ -1,7 +1,7 @@
-.flex.justify-center.items-center.w-screen.h-screen.bg-gray-100
+.flex.justify-center.items-center.w-screen.min-h-screen.bg-gray-100
   = turbo_stream_from @game
 
-  %div{class: "p-10 rounded bg-white w-11/12 h-5/6"}
+  %div{class: "p-10 rounded bg-white w-11/12 min-h-screen"}
     %p.mb-5.text-xl.uppercase.text-gray-600 Spielverwaltung
     %p.mb-5="Game-ID: #{@game.id}"
 
@@ -11,5 +11,5 @@
       %div
         = link_to 'Neue Insel erfassen', new_game_island_path(@game), class: 'mb-5 bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded', data: { "turbo-frame": "modal" }
 
-    = turbo_frame_tag "islands", class: "grid grid-cols-2 gap-4" do
+    = turbo_frame_tag "islands", class: "grid grid-cols-1 lg:grid-cols-2 gap-4" do
       = render @game.islands
