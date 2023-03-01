@@ -49,7 +49,7 @@ gem "image_processing", "~> 1.12"
 gem "haml-rails"
 
 # Process jobs asynchronously
-gem "sidekiq", "<7"
+gem "sidekiq", "<8"
 
 # Translations for models
 gem "mobility", "~> 1.2"
