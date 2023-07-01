@@ -20,12 +20,6 @@
         "npm"
       ],
       "rangeStrategy": "bump"
-    },
-    {
-      "matchPackageNames": [
-        "ruby"
-      ],
-      "allowedVersions": "<3.2"
     }
   ],
   "rangeStrategy": "update-lockfile",
