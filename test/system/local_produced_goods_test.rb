@@ -58,7 +58,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
     click_on "Eingabeware hinzufügen"
     within ".nested-fields" do
-      fill_in_tom_select_field(".ts-wrapper", input_good.name_de)
+      fill_in_tom_select_field(input_good.name_de)
     end
 
     fill_in "Production", with: 5.0
@@ -92,7 +92,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     click_on "Export hinzufügen"
     fill_in "Quantity", with: 5.0
     within ".nested-fields" do
-      fill_in_tom_select_field(".ts-wrapper", target_island.name)
+      fill_in_tom_select_field(target_island.name)
     end
 
     fill_in "Production", with: 5.0
