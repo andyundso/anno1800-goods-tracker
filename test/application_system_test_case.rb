@@ -5,20 +5,24 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include ActionView::RecordIdentifier
   include Capybara::Screenshot::MiniTestPlugin
 
-  Capybara.register_driver :headless_chromium do |app|
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--window-size=1400,1400")
-    Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: options)
+  # https://github.com/rubycdp/cuprite/issues/180#issuecomment-1004943531
+  Capybara.register_driver(:anno_cuprite) do |app|
+    Capybara::Cuprite::Driver.new(
+      app,
+      browser_options: {
+        "disable-dev-shm-usage": nil,
+        "no-sandbox": nil
+      },
+      headless: true,
+      window_size: [1400, 1400]
+    )
   end
 
-  Capybara::Screenshot.register_driver(:headless_chromium) do |driver, path|
+  Capybara::Screenshot.register_driver(:anno_cuprite) do |driver, path|
     driver.save_screenshot(path)
   end
 
-  driven_by :headless_chromium
+  driven_by :anno_cuprite
 
   # Ensure 404 bring up error pages
   Rails.application.config.action_dispatch.show_exceptions = true
