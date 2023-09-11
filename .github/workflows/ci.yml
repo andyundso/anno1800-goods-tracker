@@ -26,7 +26,7 @@ jobs:
         options: --entrypoint redis-server
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install dependencies
         run: |
           sudo apt update && sudo apt-get -y install libpq-dev build-essential libcurl4-openssl-dev
