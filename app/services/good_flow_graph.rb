@@ -77,7 +77,7 @@ class GoodFlowGraph
     AvailableGood.where(
       good_id: available_good.good_id,
       island_id: island_ids
-    ).each { |ag| examine_next_node(ag, available_good) }
+    ).find_each { |ag| examine_next_node(ag, available_good) }
   end
 
   def find_input_goods(available_good)
@@ -104,7 +104,7 @@ class GoodFlowGraph
     AvailableGood.where(
       good_id: available_good.good_id,
       island_id: island_ids
-    ).each { |ag| examine_next_node(ag, available_good, true) }
+    ).find_each { |ag| examine_next_node(ag, available_good, true) }
   end
 
   def find_output_goods(available_good)
@@ -117,7 +117,7 @@ class GoodFlowGraph
     AvailableGood.where(
       good_id: good_ids,
       island_id: available_good.island_id
-    ).each { |ag| examine_next_node(ag, available_good) }
+    ).find_each { |ag| examine_next_node(ag, available_good) }
   end
 
   attr_accessor :available_good, :output
