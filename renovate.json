@@ -15,7 +15,8 @@
         "major",
         "minor"
       ],
-      "groupName": "non-patch Rails dependencies"
+      "commitMessageAction": "Apply",
+      "groupName": "all non-patch Rails updates"
     }
   ]
 }
