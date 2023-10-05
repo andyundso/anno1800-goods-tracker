@@ -1,35 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "github>simplificator/renovate-preset"
   ],
   "packageRules": [
     {
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch",
+      "matchPackageNames": [
+        "rails"
+      ],
       "matchPackagePatterns": [
-        "*"
+        "^@rails/"
       ],
       "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ]
-    },
-    {
-      "matchManagers": [
-        "npm"
+        "major",
+        "minor"
       ],
-      "rangeStrategy": "bump"
+      "groupName": "non-patch Rails dependencies"
     }
-  ],
-  "rangeStrategy": "update-lockfile",
-  "schedule": [
-    "before 8am on monday"
-  ],
-  "vulnerabilityAlerts": {
-    "labels": [
-      "security"
-    ],
-    "schedule": "at any time"
-  }
+  ]
 }
