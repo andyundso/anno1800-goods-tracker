@@ -30,7 +30,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :anno_cuprite
 
   # Ensure 404 bring up error pages
-  Rails.application.config.action_dispatch.show_exceptions = true
+  Rails.application.config.action_dispatch.show_exceptions = :all
 
   def fill_in_tom_select_field(value)
     assert_selector(TOM_SELECT_CONTROL_SELECTOR, count: 1)
