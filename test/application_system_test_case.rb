@@ -1,10 +1,8 @@
 require "test_helper"
-require "capybara-screenshot/minitest"
 require "capybara/cuprite"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include ActionView::RecordIdentifier
-  include Capybara::Screenshot::MiniTestPlugin
 
   TOM_SELECT_CONTROL_SELECTOR = ".ts-control"
   TOM_SELECT_INPUT_SELECTOR = "#{TOM_SELECT_CONTROL_SELECTOR} input"
@@ -21,10 +19,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
       headless: true,
       window_size: [1400, 1400]
     )
-  end
-
-  Capybara::Screenshot.register_driver(:anno_cuprite) do |driver, path|
-    driver.save_screenshot(path)
   end
 
   driven_by :anno_cuprite

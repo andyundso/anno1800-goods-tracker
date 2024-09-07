@@ -49,7 +49,7 @@ gem "image_processing", "~> 1.12"
 gem "haml-rails"
 
 # Process jobs asynchronously
-gem "sidekiq", "<8"
+gem "solid_queue"
 
 # Translations for models
 gem "mobility", "~> 1.2"
@@ -94,7 +94,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "capybara-screenshot"
   gem "cuprite"
 end
 
