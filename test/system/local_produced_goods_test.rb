@@ -1,6 +1,8 @@
 require "application_system_test_case"
 
 class LocalProducedGoodsTest < ApplicationSystemTestCase
+  include ActiveJob::TestHelper
+
   test "user wants to add a local produced good - failure" do
     island = create(:island)
 
@@ -32,7 +34,9 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     fill_in "Consumption", with: 2.0
 
     assert_changes "LocalProducedGood.count", 1 do
-      click_on "Speichern"
+      perform_enqueued_jobs do
+        click_on "Speichern"
+      end
 
       assert_text "#{good.name_de} auf #{island.name} wurde erfasst."
     end
@@ -65,7 +69,9 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     fill_in "Consumption", with: 2.0
 
     assert_difference -> { LocalProducedGood.count } => 1, -> { AvailableGood.count } => 2 do
-      click_on "Speichern"
+      perform_enqueued_jobs do
+        click_on "Speichern"
+      end
 
       assert_text "#{output_good.name_de} auf #{island.name} wurde erfasst."
     end
@@ -97,10 +103,19 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
     fill_in "Production", with: 5.0
 
-    assert_difference -> { LocalProducedGood.count } => 1, -> { AvailableGood.count } => 2, -> { Export.count } => 1 do
-      click_on "Speichern"
+    assert_difference -> { LocalProducedGood.count } => 1, -> { Export.count } => 1, -> { AvailableGood.count } => 2 do
+      # this broadcasts the flash message
+      perform_enqueued_jobs do
+        click_on "Speichern"
+      end
 
       assert_text "#{good.name_de} auf #{production_island.name} wurde erfasst."
+
+      # this runs the first "UpdateAvailableGood" job for the producer island
+      perform_enqueued_jobs
+
+      # this runs the second "UpdateAvailableGood" job for the receiver island
+      perform_enqueued_jobs
     end
 
     # Ensure the available good gets produced
@@ -115,6 +130,8 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
   test "user wants to edit local produced good - success" do
     local_produced_good = create(:local_produced_good)
+    perform_enqueued_jobs
+
     available_good = AvailableGood.find_by(
       good_id: local_produced_good.good_id,
       island_id: local_produced_good.island_id
@@ -139,6 +156,8 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
   test "user wants to delete local produced good" do
     local_produced_good = create(:local_produced_good)
+    perform_enqueued_jobs
+
     available_good = AvailableGood.find_by(
       good_id: local_produced_good.good_id,
       island_id: local_produced_good.island_id
