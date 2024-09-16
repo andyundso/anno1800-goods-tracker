@@ -148,7 +148,7 @@ GEM
       activesupport (>= 5.1)
       haml (>= 4.0.6)
       railties (>= 5.1)
-    i18n (1.14.5)
+    i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)
@@ -204,7 +204,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.8)
-    propshaft (0.9.1)
+    propshaft (1.0.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
@@ -268,7 +268,7 @@ GEM
     redis-client (0.22.2)
       connection_pool
     regexp_parser (2.9.2)
-    reline (0.5.9)
+    reline (0.5.10)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
