@@ -13,7 +13,7 @@ gem "propshaft"
 gem "pg", "~> 1.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 6.0"
+gem "puma", "~> 6.4"
 
 # Use a JavaScript bundler to manage dependencies [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
