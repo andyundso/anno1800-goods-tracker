@@ -69,11 +69,16 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     fill_in "Consumption", with: 2.0
 
     assert_difference -> { LocalProducedGood.count } => 1, -> { AvailableGood.count } => 2 do
+      # perform a first job to calculate the available for the current island
+      # and enqueues a second job to recalculate the input good
       perform_enqueued_jobs do
         click_on "Speichern"
       end
 
       assert_text "#{output_good.name_de} auf #{island.name} wurde erfasst."
+
+      # recalculate the input good
+      perform_enqueued_jobs
     end
 
     # Ensure the available good gets produced
