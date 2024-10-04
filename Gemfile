@@ -27,8 +27,8 @@ gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
 
-# Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.0"
+# Use Solid Cable adapter to run Action Cable in production
+gem "solid_cable", "~> 3.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
