@@ -490,9 +490,11 @@ module Seeds
         name_en: "Fuel",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/4/44/Fuel.png"
       }, {
+        name_de: "Konfitüre",
         name_en: "Jam",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/f/fa/Jam.png"
       }, {
+        name_de: "Shampoo",
         name_en: "Shampoo",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/b/bb/Shampoo.png"
       }, {
@@ -500,13 +502,15 @@ module Seeds
         name_en: "Elevators",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/d/db/Elevators.png"
       }, {
+        name_de: "Limonade",
         name_en: "Lemonade",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/2/2a/Lemonade.png"
       }, {
+        name_de: "Souvenirs",
         name_en: "Souvenirs",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/5/56/Souvenirs.png"
       }, {
-        name_de: "Kaugummi",
+        name_de: "Kaugummis",
         name_en: "Chewing Gum",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/b/ba/Chewing_Gum.png"
       }, {
@@ -518,9 +522,11 @@ module Seeds
         name_en: "Biscuits",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/f/f5/Biscuits.png"
       }, {
+        name_de: "Schreibmaschine",
         name_en: "Typewriters",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/6/6c/Typewriters.png"
       }, {
+        name_de: "Violinen",
         name_en: "Violins",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/3/3f/Violins.png"
       }, {
@@ -536,13 +542,15 @@ module Seeds
         name_en: "Chewing Gum",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/b/ba/Chewing_Gum.png"
       }, {
-        name_en: "Cinnamon",
         name_de: "Zimt",
+        name_en: "Cinnamon",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/1/1b/Cinnamon.png"
       }, {
+        name_de: "Kokosöl",
         name_en: "Coconut Oil",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/e/e6/Coconut_Oil.png"
       }, {
+        name_de: "Kampfer",
         name_en: "Camphor Wax",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/3/30/Camphor_Wax.png"
       }, {
@@ -621,6 +629,151 @@ module Seeds
         name_de: "Sofas",
         name_en: "Lounge Seating",
         url_to_image: "https://static.wikia.nocookie.net/anno1800/images/a/a9/Lounge_Seating.png"
+      },
+      {
+        name_de: "Zahnpasta",
+        name_en: "Toothpaste",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/6/61/Toothpaste.png"
+      },
+      {
+        name_de: "Waschmittel",
+        name_en: "Detergent",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/c/cb/Detergent.png"
+      },
+      {
+        name_de: "Lippenstifte",
+        name_en: "Lipstick",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/4/41/Lipstick.png"
+      },
+      {
+        name_de: "Gesichtscreme",
+        name_en: "Face Cream",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/3/37/Face_Cream.png"
+      },
+      {
+        name_de: "Pomade",
+        name_en: "Pomade",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/d/da/Pomade.png"
+      },
+      {
+        name_de: "Aluminiumprofile",
+        name_en: "Aluminium Profiles",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/2/24/Aluminium_Profiles.png"
+      },
+      {
+        name_de: "Bauxit",
+        name_en: "Bauxite",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/1/11/Bauxite.png"
+      },
+      {
+        name_de: "Nanduleder",
+        name_en: "Nandu Leather",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/f/fc/Nandu_Leather.png"
+      },
+      {
+        name_de: "Fussbälle",
+        name_en: "Soccer Balls",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/9/9a/Soccer_Balls.png"
+      },
+      {
+        name_de: "Kräuter",
+        name_en: "Herbs",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/7/79/Herbs.png"
+      },
+      {
+        name_de: "Mezcal",
+        name_en: "Mezcal",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/9/99/Mezcal.png"
+      },
+      {
+        name_de: "Calamares",
+        name_en: "Calamari",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/6/6e/Calamari.png"
+      },
+      {
+        name_de: "Jalea",
+        name_en: "Jalea",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/f/fc/Jalea.png"
+      },
+      {
+        name_de: "Milch",
+        name_en: "Milk",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/9/92/Milk.png"
+      },
+      {
+        name_de: "Eiscreme",
+        name_en: "Ice Cream",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/5/5d/Ice_Cream.png"
+      },
+      {
+        name_de: "Feuerlöscher",
+        name_en: "Fire Extinguishers",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/b/b1/Fire_Extinguishers.png"
+      },
+      {
+        name_de: "Orchidee",
+        name_en: "Orchid",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/3/3f/Orchid.png"
+      },
+      {
+        name_de: "Parfüms",
+        name_en: "Perfumes",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/7/71/Perfumes.png"
+      },
+      {
+        name_de: "Kostüme",
+        name_en: "Costumes",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/f/fc/Costumes.png"
+      },
+      {
+        name_de: "Pigmente",
+        name_en: "Pigments",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/c/c0/Pigments.png"
+      },
+      {
+        name_de: "Nandufedern",
+        name_en: "Nandu Feathers",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/4/4c/Nandu_Feathers.png"
+      },
+      {
+        name_de: "Erze",
+        name_en: "Minerals",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/1/10/Minerals.png"
+      },
+      {
+        name_de: "Polizeiausrüstung",
+        name_en: "Police Equipment",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/9/96/Police_Equipment.png"
+      },
+      {
+        name_de: "Ventilatoren",
+        name_en: "Fans",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/d/da/Fans.png"
+      },
+      {
+        name_de: "Motoren",
+        name_en: "Motor",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/0/0f/Motor.png"
+      },
+      {
+        name_de: "Stromkabel",
+        name_en: "Electric Cables",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/9/9b/Electric_Cables.png"
+      },
+      {
+        name_de: "Filmrolle",
+        name_en: "Film Reel",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/4/44/Film_Reel.png"
+      },
+      {
+        name_de: "Medizin",
+        name_en: "Medicine",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/2/27/Medicine.png"
+      },
+      {
+        name_de: "Motorroller",
+        name_en: "Scooter",
+        url_to_image: "https://static.wikia.nocookie.net/anno1800/images/a/ac/Scooter.png"
       }
     ]
   end
