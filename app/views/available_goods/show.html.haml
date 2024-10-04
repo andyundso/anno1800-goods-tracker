@@ -4,5 +4,5 @@
   - if @produced_good
     = render ModalFooterComponent.new(path: game_path(@produced_good.island.game)) do
       %div
-        = link_to 'Löschen', [@produced_good.island, @produced_good],method: :delete, class: "bg-red-600 hover:bg-red-900 text-white font-bold rounded p-2"
+        = link_to 'Löschen', [@produced_good.island, @produced_good], class: "bg-red-600 hover:bg-red-900 text-white font-bold rounded p-2", data: { "turbo-method": :delete }
         = link_to "Ändern", edit_island_local_produced_good_path(@produced_good.island, @produced_good), class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded p-2"
