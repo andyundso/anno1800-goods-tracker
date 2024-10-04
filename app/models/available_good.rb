@@ -5,8 +5,8 @@ class AvailableGood < ApplicationRecord
   has_one :game, through: :island
 
   after_create_commit { broadcast_append_later_to(game, target: "available_goods_#{island_id}") }
-  after_update_commit { broadcast_update_later_to(game, target: self) }
-  after_destroy_commit { broadcast_remove_to(game, target: "available_goods_#{island_id}") }
+  after_update_commit { broadcast_update_later_to(game) }
+  after_destroy_commit { broadcast_remove_to(game) }
 
   def no_values?
     consumption.zero? && production.zero? && local_usage.zero? && import.zero? && export.zero?
