@@ -1,3 +1,5 @@
+require "open-uri"
+
 require_relative "seeds/goods"
 require_relative "seeds/regions"
 
