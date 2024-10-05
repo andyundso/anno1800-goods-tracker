@@ -9,6 +9,14 @@ class AvailableGoodsController < ApplicationController
       good_id: @available_good.good_id,
       island_id: @available_good.island_id
     )
+    @incoming_dockland_trades = Trade.where(
+      output_good_id: @available_good.good_id,
+      island_id: @available_good.island_id
+    )
+    @outgoing_dockland_trades = Trade.where(
+      input_good_id: @available_good.good_id,
+      island_id: @available_good.island_id
+    )
 
     respond_to do |format|
       format.turbo_stream do

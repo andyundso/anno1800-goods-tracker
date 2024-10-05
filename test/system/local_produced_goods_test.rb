@@ -133,7 +133,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
     end
   end
 
-  test "user wants to edit local produced good - success" do
+  test "user wants to edit local produced good" do
     local_produced_good = create(:local_produced_good)
     perform_enqueued_jobs
 
@@ -148,7 +148,7 @@ class LocalProducedGoodsTest < ApplicationSystemTestCase
 
     assert_text "#{available_good.good.name} auf #{available_good.island.name}"
 
-    click_on "Ändern"
+    click_on "Produktion anpassen"
 
     fill_in "Production", with: 15.0
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_04_161025) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_05_092305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -53,8 +53,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_161025) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "local_usage", default: "0.0", null: false
-    t.decimal "export", default: "0.0", null: false
-    t.decimal "import", default: "0.0", null: false
+    t.decimal "island_export", default: "0.0", null: false
+    t.decimal "island_import", default: "0.0", null: false
+    t.decimal "dockland_export", default: "0.0", null: false
+    t.decimal "dockland_import", default: "0.0", null: false
     t.index ["good_id"], name: "index_available_goods_on_good_id"
     t.index ["island_id"], name: "index_available_goods_on_island_id"
   end
@@ -270,6 +272,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_161025) do
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
+  create_table "trades", force: :cascade do |t|
+    t.integer "input_good_quantity", null: false
+    t.uuid "input_good_id"
+    t.integer "output_good_quantity", null: false
+    t.uuid "output_good_id"
+    t.uuid "island_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["input_good_id"], name: "index_trades_on_input_good_id"
+    t.index ["island_id"], name: "index_trades_on_island_id"
+    t.index ["output_good_id"], name: "index_trades_on_output_good_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "available_goods", "goods"
@@ -288,4 +303,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_161025) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "trades", "goods", column: "input_good_id"
+  add_foreign_key "trades", "goods", column: "output_good_id"
+  add_foreign_key "trades", "islands"
 end

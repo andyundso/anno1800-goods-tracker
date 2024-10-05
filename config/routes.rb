@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
 
     resources :local_produced_goods
+    resources :trades, except: %i[show]
   end
 
   root "games#new"

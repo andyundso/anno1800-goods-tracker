@@ -18,5 +18,4 @@ Minitest:
   Enabled: true
 
 Minitest/MultipleAssertions :
-  Exclude:
-    - test/system/**/*
+  Enabled: false

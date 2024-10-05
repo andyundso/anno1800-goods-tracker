@@ -16,11 +16,15 @@ class GoodFlowGraph
   def add_node(available_good)
     output << {
       consumption: available_good.consumption,
+      dockland_import: available_good.dockland_import,
+      dockland_export: available_good.dockland_export,
       good_name: available_good.good.name,
       href: island_available_good_path(available_good.island_id, available_good.id),
       id: available_good.id,
-      island: available_good.island.name,
       image: rails_blob_path(available_good.good.icon, only_path: true),
+      island: available_good.island.name,
+      island_import: available_good.island_import,
+      island_export: available_good.island_export,
       sparse: available_good.sparse,
       production: available_good.production,
       type: "node"
@@ -49,8 +53,12 @@ class GoodFlowGraph
 
     # depending on the value set on the good, we can draw different links
     # for local consumption or production, we don't need to further draw links
-    if available_good.export > 0.0
+    if available_good.island_export > 0.0
       find_export_islands(available_good)
+    end
+
+    if available_good.dockland_export > 0.0
+      find_outgoing_trades(available_good)
     end
 
     if available_good.local_usage > 0.0
@@ -58,8 +66,12 @@ class GoodFlowGraph
       find_output_goods(available_good)
     end
 
-    if available_good.import > 0.0
+    if available_good.island_import > 0.0
       find_import_goods(available_good)
+    end
+
+    if available_good.dockland_import > 0.0
+      find_incoming_trades(available_good)
     end
 
     if available_good.consumption > 0.0 || available_good.production > 0.0
@@ -118,6 +130,30 @@ class GoodFlowGraph
       good_id: good_ids,
       island_id: available_good.island_id
     ).find_each { |ag| examine_next_node(ag, available_good) }
+  end
+
+  def find_outgoing_trades(available_good)
+    good_ids = Trade.where(
+      input_good_id: available_good.good_id,
+      island_id: available_good.island_id
+    ).pluck(:output_good_id)
+
+    AvailableGood.where(
+      good_id: good_ids,
+      island_id: available_good.island_id
+    ).find_each { |ag| examine_next_node(ag, available_good) }
+  end
+
+  def find_incoming_trades(available_good)
+    good_ids = Trade.where(
+      output_good_id: available_good.good_id,
+      island_id: available_good.island_id
+    ).pluck(:input_good_id)
+
+    AvailableGood.where(
+      good_id: good_ids,
+      island_id: available_good.island_id
+    ).find_each { |ag| examine_next_node(ag, available_good, true) }
   end
 
   attr_accessor :available_good, :output
