@@ -4,8 +4,11 @@
       = image_tag(url_for(available_good.good.icon), class: 'h-16')
 
     .pt-2.flex.items-center.flex-col.text-center
-      - if available_good.import != 0.0
-        %p="Import: #{available_good.import}"
+      - if available_good.island_import != 0.0
+        %p="Import von anderen Inseln: #{available_good.island_import}"
+
+      - if available_good.dockland_import != 0.0
+        %p="Import von Speicherstadt: #{available_good.dockland_import}"
 
       - if available_good.production != 0.0
         %p="Produktion: #{available_good.production}"
@@ -16,8 +19,11 @@
       - if available_good.local_usage != 0.0
         %p="Lokale Weiterverarbeitung: #{available_good.local_usage}"
 
-      - if available_good.export != 0.0
-        %p="Export: #{available_good.export}"
+      - if available_good.dockland_export != 0.0
+        %p="Export zu Speicherstadt: #{available_good.dockland_export}"
+
+      - if available_good.island_export != 0.0
+        %p="Export zu anderen Inseln: #{available_good.island_export}"
 
       - if available_good.sparse != 0.0
         %p="#{available_good.sparse < 0.0 ? 'Mangel' : 'Überschuss'}: #{available_good.sparse}"

@@ -1,0 +1,10 @@
+de:
+  activerecord:
+    attributes:
+      trade:
+        input_good: "Eingabeware"
+        input_good_id: "Eingabeware"
+        input_good_quantity: "Eingabemenge"
+        output_good: "Ausgabeware"
+        output_good_id: "Ausgabeware"
+        output_good_quantity: "Ausgabemenge"

@@ -2,9 +2,12 @@
   .rounded.border-2.border-gray-300.p-4.h-full
     .flex.justify-between.mb-5
       %p.font-bold=island.name
-      .flex
+      .flex.items-center.gap-1
         - if island.region.icon.attached?
           = image_tag(url_for(island.region.icon), class: 'h-4 m-1 filter invert')
+
+        = link_to new_island_trade_path(island), data: { "turbo-frame": "modal" }, class: "add-trade" do
+          = image_tag('Docklands.png', class: 'h-4')
 
         = link_to new_island_local_produced_good_path(island), data: { "turbo-frame": "modal" }, class: 'add-island' do
           = render Icon::PlusComponent.new

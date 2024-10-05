@@ -1,8 +1,39 @@
 = render ModalComponent.new(title: "#{@available_good.good.name} auf #{@available_good.island.name}") do
-  %div{ data: { controller: "good-graph", id: @available_good.id, island_id: @available_good.island_id }, class: "h-5/6" }
+  %div{ data: { controller: "good-graph", id: @available_good.id, island_id: @available_good.island_id } }
 
-  - if @produced_good
-    = render ModalFooterComponent.new(path: game_path(@produced_good.island.game)) do
-      %div
-        = link_to 'Löschen', [@produced_good.island, @produced_good], class: "bg-red-600 hover:bg-red-900 text-white font-bold rounded p-2", data: { "turbo-method": :delete }
-        = link_to "Ändern", edit_island_local_produced_good_path(@produced_good.island, @produced_good), class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded p-2"
+  .grid.grid-cols-4.pt-4
+    - if @produced_good
+      .flex.flex-col.items-center.gap-2
+        %p.text-xl.font-bold
+          Lokale Produktion
+
+        = image_tag(url_for(@produced_good.good.icon), class: 'h-16')
+
+        .flex.gap-4
+          = link_to 'Löschen', [@produced_good.island, @produced_good], class: "text-red-900", data: { "turbo-method": :delete }
+          = link_to "Produktion anpassen", edit_island_local_produced_good_path(@produced_good.island, @produced_good)
+
+    - @incoming_dockland_trades.find_each do |incoming_trade|
+      .flex.flex-col.items-center.gap-2
+        %p.text-xl.font-bold
+          Handel gegen #{incoming_trade.input_good.name}
+
+        = image_tag(url_for(incoming_trade.input_good.icon), class: 'h-16')
+
+        .flex.gap-4
+          = link_to 'Löschen', [incoming_trade.island, incoming_trade], class: "text-red-900", data: { "turbo-method": :delete }
+          = link_to "Handel anpassen", edit_island_trade_path(incoming_trade.island, incoming_trade)
+
+    - @outgoing_dockland_trades.find_each do |outgoing_trade|
+      .flex.flex-col.items-center.gap-2
+        %p.text-xl.font-bold
+          Handel für #{outgoing_trade.output_good.name}
+
+        = image_tag(url_for(outgoing_trade.output_good.icon), class: 'h-16')
+
+        .flex.gap-4
+          = link_to 'Löschen', [outgoing_trade.island, outgoing_trade], class: "text-red-900", data: { "turbo-method": :delete }
+          = link_to "Handel anpassen", edit_island_trade_path(outgoing_trade.island, outgoing_trade)
+
+  .pt-4
+    = render ModalFooterComponent.new(path: game_path(@available_good.game))

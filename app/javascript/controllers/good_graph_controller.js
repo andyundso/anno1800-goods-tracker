@@ -36,19 +36,37 @@ export default class extends Controller {
         set.push(r.text(0, offset, n.island).click(() => clickHandler(n.href)))
         offset += 10
 
-        if (n.production !== null) {
+        if (n.island_import !== "0.0") {
+            set.push(r.text(0, offset, `Insel-Import: ${n.island_import}`).click(() => clickHandler(n.href)))
+            offset += 10
+        }
+
+        if (n.dockland_import !== "0.0") {
+            set.push(r.text(0, offset, `Speicherstadt-Import: ${n.dockland_import}`).click(() => clickHandler(n.href)))
+            offset += 10
+        }
+
+        if (n.production !== "0.0") {
             set.push(r.text(0, offset, `Produktion: ${n.production}`).click(() => clickHandler(n.href)))
             offset += 10
         }
 
-        if (n.consumption !== null) {
+        if (n.consumption !== "0.0") {
             set.push(r.text(0, offset, `Verbrauch: ${n.consumption}`).click(() => clickHandler(n.href)))
             offset += 10
         }
 
-        if (n.sparse !== null) {
-            set.push(r.text(0, offset, `Rest-Menge: ${n.sparse}`).click(() => clickHandler(n.href)))
+        if (n.dockland_export !== "0.0") {
+            set.push(r.text(0, offset, `Speicherstadt-Export: ${n.dockland_export}`).click(() => clickHandler(n.href)))
+            offset += 10
         }
+
+        if (n.island_export !== "0.0") {
+            set.push(r.text(0, offset, `Insel-Export: ${n.island_export}`).click(() => clickHandler(n.href)))
+            offset += 10
+        }
+
+        set.push(r.text(0, offset, `Rest-Menge: ${n.sparse}`).click(() => clickHandler(n.href)))
 
         return set;
     }
