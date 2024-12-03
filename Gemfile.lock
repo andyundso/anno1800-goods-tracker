@@ -297,7 +297,7 @@ GEM
     ruby-vips (2.2.2)
       ffi (~> 1.12)
       logger
-    securerandom (0.3.2)
+    securerandom (0.4.0)
     solid_cable (3.0.2)
       actioncable (>= 7.2)
       activejob (>= 7.2)
