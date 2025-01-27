@@ -70,8 +70,8 @@ class LocalProducedGoodsController < ApplicationController
         :consumption,
         :good_id,
         :island_id,
-        input_goods_attributes: %i[id input_good_id good_id _destroy],
-        exports_attributes: %i[id quantity island_id _destroy]]
+        input_goods_attributes: [%i[id input_good_id good_id _destroy]],
+        exports_attributes: [%i[id quantity island_id _destroy]]]
     )
   end
 

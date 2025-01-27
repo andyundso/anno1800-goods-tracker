@@ -21,7 +21,7 @@ class LocalProducedGood < ApplicationRecord
     UpdateAvailableGoodJob.perform_later(island_id, good_id)
     ActiveJob.perform_all_later(exports.map { |e| UpdateAvailableGoodJob.perform_later(e.island_id, good_id) })
 
-    if good_id != good_id_before_last_save
+    if good_id_before_last_save.present? && good_id != good_id_before_last_save
       UpdateAvailableGoodJob.perform_later(island_id, good_id_before_last_save)
       ActiveJob.perform_all_later(exports.map { |e| UpdateAvailableGoodJob.perform_later(e.island_id, good_id_before_last_save) })
     end
