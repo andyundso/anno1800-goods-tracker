@@ -42,6 +42,9 @@ class TradesTest < ApplicationSystemTestCase
       end
 
       assert_text "Speicherstadt-Handel erfolgreich erfasst."
+
+      perform_enqueued_jobs
+      perform_enqueued_jobs
     end
 
     # Ensure the available good gets produced
