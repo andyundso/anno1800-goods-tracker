@@ -65,13 +65,13 @@ class LocalProducedGoodsController < ApplicationController
   private
 
   def local_produced_goods_params
-    params.require(:local_produced_good).permit(
-      :production,
-      :consumption,
-      :good_id,
-      :island_id,
-      input_goods_attributes: %i[id input_good_id good_id _destroy],
-      exports_attributes: %i[id quantity island_id _destroy]
+    params.expect(
+      local_produced_good: [:production,
+        :consumption,
+        :good_id,
+        :island_id,
+        input_goods_attributes: %i[id input_good_id good_id _destroy],
+        exports_attributes: %i[id quantity island_id _destroy]]
     )
   end
 

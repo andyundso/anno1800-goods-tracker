@@ -62,6 +62,6 @@ class TradesController < ApplicationController
   end
 
   def trade_params
-    params.require(:trade).permit(:input_good_quantity, :input_good_id, :output_good_quantity, :output_good_id)
+    params.expect(trade: [:input_good_quantity, :input_good_id, :output_good_quantity, :output_good_id])
   end
 end
