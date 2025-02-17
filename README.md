@@ -37,7 +37,7 @@ The tool doesn't know anything about fabrics and how much they put out. This is 
 
 ### Setup
 
-* Make sure you have Redis and Postgres running.
+* Make sure you have Postgres running.
 * Configure your database.yml.
 * Install Ruby 3.3.6.
 * Install the latest bundler `gem install bundler --no-document`.
