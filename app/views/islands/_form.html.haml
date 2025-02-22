@@ -7,11 +7,11 @@
 
   .flex.flex-col.pt-4
     = form.label :name, class: "mb-2 font-semibold text-gray-700"
-    = form.text_field :name, class: "bg-white border border-gray-200 rounded shadow-sm"
+    = form.text_field :name, class: "bg-white border border-gray-200 rounded-sm shadow-xs"
 
   .flex.flex-col.pt-4
     = form.label :region, class: "mb-2 font-semibold text-gray-700"
     = form.collection_select :region_id, Region.i18n.order(:name), :id, :name, include_blank: false
 
   = render ModalFooterComponent.new(path: game_path(game), modal: modal) do
-    = form.submit "Speichern", class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded p-2"
+    = form.submit "Speichern", class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded-sm p-2"

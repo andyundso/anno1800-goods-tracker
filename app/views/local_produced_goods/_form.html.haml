@@ -18,15 +18,15 @@
     = form.fields_for :input_goods do |task|
       = render 'input_goods/input_good_fields', f: task
     .pb-4
-    = link_to_add_association 'Eingabeware hinzufügen', form, :input_goods, partial: 'input_goods/input_good_fields', class: 'bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded', render_options: { locals: { island: @island } }
+    = link_to_add_association 'Eingabeware hinzufügen', form, :input_goods, partial: 'input_goods/input_good_fields', class: 'bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded-sm', render_options: { locals: { island: @island } }
 
   .flex.flex-col.pt-4
     = form.label :production, class: "mb-2 font-semibold text-gray-700"
-    = form.number_field :production, class: "bg-white border border-gray-200 rounded shadow-sm", step: 0.01
+    = form.number_field :production, class: "bg-white border border-gray-200 rounded-sm shadow-xs", step: 0.01
 
   .flex.flex-col.pt-4
     = form.label :consumption, class: "mb-2 font-semibold text-gray-700"
-    = form.number_field :consumption, class: "bg-white border border-gray-200 rounded shadow-sm", step: 0.01
+    = form.number_field :consumption, class: "bg-white border border-gray-200 rounded-sm shadow-xs", step: 0.01
 
   %div.pt-4
     %p.text-2xl.font-bold
@@ -36,7 +36,7 @@
     = form.fields_for :exports do |task|
       = render 'exports/export_field', f: task
     .pb-4
-    = link_to_add_association 'Export hinzufügen', form, :exports, partial: 'exports/export_field', class: 'bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded'
+    = link_to_add_association 'Export hinzufügen', form, :exports, partial: 'exports/export_field', class: 'bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded-sm'
 
   = render ModalFooterComponent.new(path: game_path(@island.game)) do
-    = form.submit "Speichern", class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded p-2"
+    = form.submit "Speichern", class: "bg-green-600 hover:bg-green-900 text-white font-bold rounded-sm p-2"
