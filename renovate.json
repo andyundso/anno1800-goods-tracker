@@ -6,10 +6,8 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "rails"
-      ],
-      "matchPackagePatterns": [
-        "^@rails/"
+        "rails",
+        "/^@rails//"
       ],
       "matchUpdateTypes": [
         "major",
