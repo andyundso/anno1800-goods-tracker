@@ -7,10 +7,10 @@
         %span.block
           Dieses Spiel existiert nicht.
 
-      %input.mb-5.p-3.w-80.focus:border-green-700.rounded.border-2.outline-none{name: 'game_id', placeholder: "Game ID", type: "text", "data-existing-game-target" => "id"}
+      %input.mb-5.p-3.w-80.focus:border-green-700.rounded.border-2.outline-hidden{name: 'game_id', placeholder: "Game ID", type: "text", "data-existing-game-target" => "id"}
       %button.bg-green-600.hover:bg-green-900.text-white.font-bold.p-2.rounded.w-80{type: "submit" }
         %span Öffnen
 
     %p.mt-5.mb-5.text-xl.uppercase.text-gray-600 Neues Spiel erstellen
     = form_with model: @game do |form|
-      = form.submit "Erstellen", class: "bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded w-80"
+      = form.submit "Erstellen", class: "bg-green-600 hover:bg-green-900 text-white font-bold p-2 rounded-sm w-80"
