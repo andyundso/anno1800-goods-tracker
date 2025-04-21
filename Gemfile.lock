@@ -111,7 +111,7 @@ GEM
       xpath (~> 3.2)
     cocoon (1.2.15)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.0)
+    connection_pool (2.5.1)
     crass (1.0.6)
     cuprite (0.15.1)
       capybara (~> 3.0)
@@ -318,7 +318,7 @@ GEM
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
-    solid_queue (1.1.4)
+    solid_queue (1.1.5)
       activejob (>= 7.1)
       activerecord (>= 7.1)
       concurrent-ruby (>= 1.3.1)
@@ -339,7 +339,7 @@ GEM
       rubocop-performance (~> 1.25.0)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
-    stringio (3.1.6)
+    stringio (3.1.7)
     tailwindcss-rails (4.2.2)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
@@ -439,7 +439,7 @@ CHECKSUMS
   capybara (3.40.0) sha256=42dba720578ea1ca65fd7a41d163dd368502c191804558f6e0f71b391054aeef
   cocoon (1.2.15) sha256=d08f14e69653287d7a060ee43389b8c824e55191dffbca0c5c586f38ef491f0d
   concurrent-ruby (1.3.5) sha256=813b3e37aca6df2a21a3b9f1d497f8cbab24a2b94cab325bffe65ee0f6cbebc6
-  connection_pool (2.5.0) sha256=233b92f8d38e038c1349ccea65dd3772727d669d6d2e71f9897c8bf5cd53ebfc
+  connection_pool (2.5.1) sha256=ae802a90a4b5a081101b39d618e69921a9a50bea9ac3420a5b8c71f1befa3e9c
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
   cuprite (0.15.1) sha256=0b3a25b2e408b345dfa0bae8bc5e7f021f913737c746edece9ca9fbb57eba259
   date (3.4.1) sha256=bf268e14ef7158009bfeaec40b5fa3c7271906e88b196d958a89d4b408abe64f
@@ -524,12 +524,12 @@ CHECKSUMS
   ruby-vips (2.2.3) sha256=41d12b1a805cd6ead4a7965201a8f7c5fe459bb58d3a7d967c9eb0719a6edc92
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   solid_cable (3.0.7) sha256=f2bce91e17e2c6e04c3c5e9905cc31b1078ff991702278c8bb1ac2e09f441a21
-  solid_queue (1.1.4) sha256=7b5b3395ec7ca8c131c71df9082e919ab7b5332684f6f686206f321d1c6b9f90
+  solid_queue (1.1.5) sha256=bae0c9d76310f4953ebc57466f2e8c78703a0fbf4b89d25756c23c88f9b6df9b
   standard (1.49.0) sha256=590cd11a2021350812483cb53fc185bd8a92ca215839145d71fdd693750bb470
   standard-custom (1.0.2) sha256=424adc84179a074f1a2a309bb9cf7cd6bfdb2b6541f20c6bf9436c0ba22a652b
   standard-performance (1.8.0) sha256=ed17b7d0e061b2a19a91dd434bef629439e2f32310f22f26acb451addc92b788
   stimulus-rails (1.3.4) sha256=765676ffa1f33af64ce026d26b48e8ffb2e0b94e0f50e9119e11d6107d67cb06
-  stringio (3.1.6) sha256=292c495d1657adfcdf0a32eecf12a60e6691317a500c3112ad3b2e31068274f5
+  stringio (3.1.7) sha256=5b78b7cb242a315fb4fca61a8255d62ec438f58da2b90be66048546ade4507fa
   tailwindcss-rails (4.2.2) sha256=38e33cd50f3770f33250678ad33f08d249530a0920b956448a92610a61e6bd10
   tailwindcss-ruby (4.0.17) sha256=d5ccc25ce101185d9b085d919e6083c15d9c9254a8e7918b2071a55cbc8883bb
   tailwindcss-ruby (4.0.17-x86_64-linux-gnu) sha256=f571529f5cdd23a8465344073faac1be3d0584f4a3e72280b40d73d76769d1d8
